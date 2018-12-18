@@ -1,0 +1,2 @@
+class FileMail < ApplicationRecord
+end

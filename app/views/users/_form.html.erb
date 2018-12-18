@@ -1,0 +1,41 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, id: :user_first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :user_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.text_field :age, id: :user_age %>
+  </div>
+  
+  <% if current_user.has_role? && current_user != @user%>
+    <div class="field">
+      <%= form.collection_select(:roles_mask, User::ROLES, :to_s, lambda{|i| i.to_s.humanize}) %>
+    </div>
+  <% end %>
+
+  <% if current_user == @user%>
+    <%= link_to "Change your password", edit_user_registration_path %>
+  <% end %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,80 @@
+<h1>Admin Manage (TuMV Demo SignInWith CanCan)</h1>
+<%= form_tag articles_path, :method => 'get' do %>
+<p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", title: :nil %>
+</p>
+<% end %>
+<!-- Article -->
+<% if ((can? :manage, @articles) && @articles.length > 0)%>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Post</th>
+      <th>Attached Image</th>
+      <th>Attached File</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody id="articles">
+    <%= render @articles %>
+  </tbody>
+</table>
+<br>
+<div class="button_linkto">
+  <%= link_to 'New Article', new_article_path %>
+</div>
+<div id="paginator_articles">
+  <%= paginate @articles, param_name: :page_article, remote: true %>
+</div>
+<% end %>
+
+<!-- Question -->
+<% if ((can? :manage , @questions) && @questions.length > 0)%>
+<br>
+<h3>All Question</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Answers</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="questions">
+    <%= render @questions %>
+  </tbody>
+</table>
+<br>
+<div class="button_linkto">
+  <%= link_to 'New Question', new_question_path %>
+</div>
+<div id="paginator_questions">
+  <%= paginate @questions, param_name: :page_question, remote: true %>
+</div>
+<% end %>
+
+<!-- User -->
+<% if ((can? :manage, @users) && (@users.length > 0 ))%>
+<br>
+<h3>All User</h3>
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Name</th>
+      <th>Email</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody id="users">
+    <%= render @users %>
+  </tbody>
+</table>
+<div id="paginator_users">
+  <%= paginate @users, param_name: :page_user, remote: true %>
+</div>
+<% end %>

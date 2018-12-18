@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SignInCanCan</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <br>
+    <% if user_signed_in? && !current_page?(root_url)%>
+    	<div class="welcome_title">
+	    	Welcome,
+	    	<% if !current_user.first_name.blank? %>
+	    		<%= current_user.first_name.humanize  %>
+	    	<% end %>
+	    	<span> </span>
+	    	<% if !current_user.last_name.blank? %>
+	    		<%= current_user.last_name.humanize %>
+	    	<% end %>
+    	</div>
+    	<div class="sign_up">
+    		<%= link_to "Edit Info",edit_user_path(current_user)%>
+    	</div>
+    	<div class="sign_up">
+    		<%= link_to "sign out",destroy_user_session_path, method: :delete   %>
+    	</div>
+	<% else %>
+	    <% if !user_signed_in? && current_page?(root_url) %>
+	    	<div class="sign_in">
+	    		<%= link_to "Sign in", new_user_session_path %>
+	    	</div>
+    		<div class="sign_up">
+    			<%= link_to "Sign up", new_user_registration_path %>
+			</div>
+		<% end %>
+	<% end %>
+	<br>
+    <%= yield %>
+  </body>
+</html>

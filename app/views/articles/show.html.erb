@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @article.post %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to(image_tag(@article.image.thumb.url, alt: 'Image'), @article.image.url, target: '_blank') if @article.image? %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @article.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

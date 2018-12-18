@@ -1,0 +1,11 @@
+/*reponse ajax articles*/
+$("#articles").html("<%= j render(@articles) %>");
+$("#paginator_articles").html("<%= j paginate(@articles, remote: true, param_name: :page_article) %>");
+
+/*reponse ajax questions*/
+$("#questions").html("<%= j render(@questions) %>");
+$("#paginator_questions").html("<%= j paginate(@questions, remote: true, param_name: :page_question) %>");
+
+/*reponse ajax users*/
+$("#users").html("<%= j render(@users) %>");
+$("#paginator_users").html("<%= j paginate(@users, remote: true, param_name: :page_user) %>");

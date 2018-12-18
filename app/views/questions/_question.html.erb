@@ -1,0 +1,12 @@
+<tr>
+  <td><%= question.content %>
+    <br>
+    <%= question.user.email %></td>
+  <td>
+    <% if question.answers.any? %>
+      <%= render question.answers%>
+    <% end %>
+  </td>
+  <td><%= link_to 'Edit', edit_question_path(question) %></td>
+  <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

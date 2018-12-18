@@ -1,0 +1,13 @@
+<tr id="<%= 'article-' + article.id.to_s %>">
+  <td><%= article.title %></td>
+  <td><%= article.post %></td>
+  <td><%= link_to(image_tag(article.image.thumb.url, alt: 'Image'), article.image.url, target: '_blank') if article.image? %></td>
+  <td>
+    <% if article.file? %>
+      <%= link_to article.file, {controller: "articles", action: "downloadFile", id: article} %></td>
+    <% end %>
+  <td><%= link_to 'Show', article %></td>
+  <td><%= link_to 'Edit', edit_article_path(article) %></td>
+  <td><%= link_to 'Destroy', article, remote: :true, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= link_to 'Download', {controller: "articles", action: "downloadFile", id: article} %></td>
+</tr>
