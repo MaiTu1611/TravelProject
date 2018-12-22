@@ -1,0 +1,29 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <%= raw @travel.details %>
+    </div>
+    <div class="col-sm-3">
+    	<h3>Thông tin</h3>
+      	<p>
+      	    <i class="icon-tag"></i>
+		  	<strong>Giá:</strong>
+		  	<%= @travel.price %>
+    	</p>
+    	<p>
+    		<i class="icon-tag"></i>
+		  	<strong>Thời gian:</strong>
+		  	<%= @travel.date %>
+		</p>
+		<p>
+    		<i class="icon-tag"></i>
+		  	<strong>Ngày khởi hành:</strong>
+		  	<%= @travel.time_go %>
+		</p>
+		<button type="button" class="regist btn btn-default btn-sm" onclick="">
+          <span class="glyphicon glyphicon-circle-arrow-right"></span> Đăng Kí Tour
+        </button>
+    </div>
+  </div>
+</div>

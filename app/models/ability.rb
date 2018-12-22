@@ -42,6 +42,11 @@ class Ability
             users == user
         end
 
+        # Only upadte own info
+        # can :update, Travel do |travel|
+        #     travel.user == user
+        # end
+
         # Only read own info
         can :read, User do |users|
             users == user
@@ -57,9 +62,21 @@ class Ability
             answer.user == user
         end
 
+        # can :destroy, Travel do |travel|
+        #     travel.user == user
+        # end
+
+        can :destroy, Tour do |tour|
+            tour.user == user
+        end
+
         # If member is user then can create question and answer
         can :create, Question
         can :create, Answer
+        can :create, Tour
+        can :read, Tour
+        # can :create, Travel
+        can :read, Travel
         can :read, Question
         can :read, Answer
         can :read, Article

@@ -1,0 +1,24 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<p>
+  <strong>Name tour:</strong>
+  <%= @travel.name_tour %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @travel.price %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @travel.date %>
+</p>
+
+<p>
+  <strong>Time go:</strong>
+  <%= @travel.time_go %>
+</p>
+
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>

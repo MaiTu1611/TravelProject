@@ -1,2 +1,24 @@
-<h1>Welcome#index</h1>
-<p>Đăng nhập đi nào :P</p>
+		<div class="fh5co-listing">
+			<div class="container">
+				<div class="row">
+					<% @travels.each do |travel| %>
+						<div class="col-md-4 col-sm-4 fh5co-item-wrap">
+						<a class="fh5co-listing-item">
+							<!-- <img src="images/img-1.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
+							<%= image_tag(travel.image, :alt => "rss feed", :class => "img-responsive") %>
+							<div class="fh5co-listing-copy">
+								<h2><%= travel.name_tour %></h2>
+								<span class="icon" onclick="location.href='<%= travel_path(:id => travel.id) %>'">
+  									<i class="icon-chevron-right"></i>
+								</span>
+							</div>
+						</a>
+						</div>
+					<% end %>
+					<!-- END 3 row -->
+
+
+				</div>
+			</div>
+		</div>
+
