@@ -1,11 +1,12 @@
-<h1>Blog's Crazy</h1>
+<br>
+<h1 style="color: white;">Blog's Travel</h1>
 <%= link_to 'New Question', new_question_path %>
 <br>
 <br>
 <% @questions.each do |question| %>
   <br>
-  <div style="border: 1px solid black;">
-    <h3><%= question.content %></h3>
+  <div style="border-top: 1px solid white;">
+    <h3 style="color: white; margin: 5px;"><%= question.content %></h3>
     <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.email %>
     <br>
     <% if can? :update, question%>
@@ -19,11 +20,11 @@
       <%= render question.answers%>
     <% end %>
     
-    <hr>
+    <hr style="border-top: dotted 1px;">
     <p>Add answer</p>
     <%= form_for([question, question.answers.build]) do |f| %>
-      <%= f.text_area :content %>
-      <%= submit_tag 'Add' %>
+      <%= f.text_area :content, :style => "border-radius: 5px;" %>
+      <%= submit_tag 'Add', :style => "border-radius: 5px; position: relative; top: -9px;"  %>
     <% end %>
   </div>
 

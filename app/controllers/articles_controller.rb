@@ -14,13 +14,16 @@ class ArticlesController < ApplicationController
     @@page_article  = params[:page_article]
     @@page_question = params[:page_question]
     @@page_user     = params[:page_user]
+    @@page_tour     = params[:page_tour]
     if params[:search]
       @articles     = Article.search(params[:search]).page(@@page_article).per(3)
       @questions    = Question.search(params[:search]).page(@@page_question).per(3)
       @users        = User.search(params[:search]).page(@@page_user).per(3).where.not(id: @user.id)
+      @tours        = Tour.search(params[:search]).page(@@page_tour).per(3)
     else
       @articles     = Article.page(@@page_article).per(3)
       @questions    = Question.page(@@page_question).per(3)
+      @tours        = Tour.page(@@page_tour).per(3)
       @users        = User.page(@@page_user).per(3).where.not(id: @user.id)
     end
   end

@@ -1,7 +1,8 @@
 <p>
-	<%= answer.content %> <br>
+	<span style="color: white;"><%= answer.content %></span>
+	<br>
 	by <font color="blue"><%= answer.user.email %></font>
 	<% if can? :destroy, answer%>
-		<%= link_to "Delete", question_answer_path(answer.question, answer), method: :delete%>
+		<%= link_to "Delete", question_answer_path(answer.question, answer), method: :delete , :style => "color: gray;" %>
 	<% end %>
 </p>

@@ -1,0 +1,9 @@
+<tr>
+  	<td><%= tour.travel.name_tour %></td>
+	<td><%= tour.travel.date %></td>
+	<td><%= tour.travel.time_go %></td>
+	<td><%= tour.travel.price %></td>
+	<td><%= tour.user.first_name + ' ' + tour.user.last_name %></td>
+	<td><%= tour.user.telephone %></td>
+	<td><%= link_to 'Xoá', tour, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color: gray;" %></td>
+</tr>

@@ -9,3 +9,7 @@ $("#paginator_questions").html("<%= j paginate(@questions, remote: true, param_n
 /*reponse ajax users*/
 $("#users").html("<%= j render(@users) %>");
 $("#paginator_users").html("<%= j paginate(@users, remote: true, param_name: :page_user) %>");
+
+/*reponse ajax users*/
+$("#tours").html("<%= j render(@tours) %>");
+$("#paginator_tours").html("<%= j paginate(@tours, remote: true, param_name: :page_tour) %>");

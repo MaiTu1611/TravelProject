@@ -3,8 +3,8 @@
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
   <td><%= user.telephone %></td>
-  <td><%= link_to 'Edit', edit_user_path(user) %></td>
-  <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <td><%= link_to 'Send Mail', send_mails_path %></td>
-  <td><%= link_to 'Send Mail Now', :controller => "users", :action => "send_mail", :id => user.id %></td>
+  <td><%= link_to 'Edit', edit_user_path(user) , :style => "color: gray;" %></td>
+  <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } , :style => "color: gray;" %></td>
+  <td><%= link_to 'Send Mail', send_mails_path , :style => "color: gray;" %></td>
+  <!-- <td><%= link_to 'Send Mail Now', :style => "color: gray;" , :controller => "users", :action => "send_mail", :id => user.id %></td> -->
 </tr>

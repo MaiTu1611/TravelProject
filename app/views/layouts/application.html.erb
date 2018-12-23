@@ -96,7 +96,7 @@
                     <li><a href="#">Photography</a></li> 
                   </ul>
                 </li> -->
-                <li><a href="<%= articles_path%>">Forum</a></li>
+                <li><a href="<%= questions_path%>">Forum</a></li>
                 <li>
                   <% if user_signed_in? %>
                     <a class="welcome_title">
@@ -114,7 +114,11 @@
                   <% end %>
                   <ul class="fh5co-sub-menu">
                       <% if user_signed_in? %>
-                        <li><%= link_to "My tour", tours_path %></li>
+                        <% if can? :manage, @articles %>
+                          <li><%= link_to "Admin Manage", articles_path %></li>
+                        <% else %>
+                          <li><%= link_to "My tour", tours_path %></li>
+                        <% end %>
                         <li><%= link_to "Edit Info",edit_user_path(current_user)%></li>
                         <li><%= link_to "Sign out",destroy_user_session_path, method: :delete   %></li>
                       <% else %>
