@@ -6,7 +6,7 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = Tour.all
+    @tours = current_user.tours.includes(:travel).all
   end
 
   # GET /tours/1
@@ -16,21 +16,26 @@ class ToursController < ApplicationController
 
   # GET /tours/new
   def new
+    @travel = Travel.find(params[:travel_id])
     @tour = Tour.new
   end
 
   # GET /tours/1/edit
   def edit
+    byebug
+    @travel = Travel.find(params[:travel_id])
   end
 
   # POST /tours
   # POST /tours.json
   def create
-    @tour = Tour.new(tour_params)
+    @travel = Travel.find(params[:travel_id])
+    @tour = @travel.tours.build()
+    @tour.user = current_user
 
     respond_to do |format|
       if @tour.save
-        format.html { redirect_to @tour, notice: 'Tour was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Tour was successfully created.' }
         format.json { render :show, status: :created, location: @tour }
       else
         format.html { render :new }
@@ -71,6 +76,5 @@ class ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(:user_id, :travel_id)
     end
 end

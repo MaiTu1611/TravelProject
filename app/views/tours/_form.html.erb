@@ -1,4 +1,4 @@
-<%= form_with(model: tour, local: true) do |form| %>
+<%= form_for [@travel, @tour], local: true do |form| %>
   <% if tour.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tour.errors.count, "error") %> prohibited this tour from being saved:</h2>
@@ -12,16 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :tour_user_id %>
+    <i class="icon-tag"></i> <span>Người đặt: </span> <%= current_user.first_name + ' ' + current_user.last_name %>
   </div>
 
   <div class="field">
-    <%= form.label :travel_id %>
-    <%= form.number_field :travel_id, id: :tour_travel_id %>
+    <i class="icon-tag"></i> <span>Chuyến đi: </span> <%= @travel.name_tour %>
   </div>
 
+  <div class="field">
+    <i class="icon-tag"></i>
+    <span>Số điện thoại: </span>
+    <%= current_user.telephone %>
+  </div>
+
+  <div class="field">
+            <i class="icon-tag"></i>
+        <span>Giá:</span>
+        <%= @travel.price %>
+      </div>
+      <div class="field">
+        <i class="icon-tag"></i>
+        <span>Thời gian:</span>
+        <%= @travel.date %>
+    </div>
+    <div class="field">
+        <i class="icon-tag"></i>
+        <span>Ngày khởi hành:</span>
+        <%= @travel.time_go %>
+    </div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Đăng kí'%>
   </div>
 <% end %>

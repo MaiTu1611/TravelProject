@@ -39,7 +39,7 @@
   <meta name="twitter:card" content="" />
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="shortcut icon" href="favicon.ico">
+  <!-- <link rel="shortcut icon" href="favicon.ico"> -->
 
   <!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
   
@@ -64,7 +64,7 @@
                 <li class="active">
                   <a href="<%= root_path%>">Home</a>
                 </li>
-                <li>
+                <!-- <li>
                   <a href="listing.html" class="fh5co-sub-ddown">Listing</a>
                   <ul class="fh5co-sub-menu">
                     <li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
@@ -95,8 +95,8 @@
                     <li><a href="#">Copywriting</a></li>
                     <li><a href="#">Photography</a></li> 
                   </ul>
-                </li>
-                <li><a href="contact.html">Contact</a></li>
+                </li> -->
+                <li><a href="<%= articles_path%>">Forum</a></li>
                 <li>
                   <% if user_signed_in? %>
                     <a class="welcome_title">
@@ -110,10 +110,11 @@
                           <% end %>
                       </a>
                   <% else %>
-                      <a href="contact.html">SignIn/Up</a>
+                      <a href="<%= new_user_session_path %>">SignIn/Up</a>
                   <% end %>
                   <ul class="fh5co-sub-menu">
                       <% if user_signed_in? %>
+                        <li><%= link_to "My tour", tours_path %></li>
                         <li><%= link_to "Edit Info",edit_user_path(current_user)%></li>
                         <li><%= link_to "Sign out",destroy_user_session_path, method: :delete   %></li>
                       <% else %>

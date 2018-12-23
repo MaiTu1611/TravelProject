@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :travels do
+    resources :tours
+  end
   resources :tours
-  resources :travels
   resources :send_mails
   	get 'errors/not_found'
   	get 'errors/internal_server_error'

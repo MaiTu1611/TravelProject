@@ -25,6 +25,11 @@
     <%= form.label :age %>
     <%= form.text_field :age, id: :user_age %>
   </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone, id: :user_telephone %>
+  </div>
   
   <% if current_user.has_role? && current_user != @user%>
     <div class="field">

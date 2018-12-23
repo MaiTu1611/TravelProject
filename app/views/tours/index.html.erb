@@ -1,29 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tours</h1>
-
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Travel</th>
-      <th colspan="3"></th>
+      <th>Chuyến đi</th>
+      <th>Thời gian</th>
+      <th>Ngày khởi hành</th>
+      <th>Giá</th>
+      <th>SDT</th>
+      <th>Xoá</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tours.each do |tour| %>
       <tr>
-        <td><%= tour.user_id %></td>
-        <td><%= tour.travel_id %></td>
-        <td><%= link_to 'Show', tour %></td>
-        <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
-        <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tour.travel.name_tour %></td>
+        <td><%= tour.travel.date %></td>
+        <td><%= tour.travel.time_go %></td>
+        <td><%= tour.travel.price %></td>
+        <td><%= current_user.telephone %></td>
+        <td><%= link_to 'Xoá', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Tour', new_tour_path %>

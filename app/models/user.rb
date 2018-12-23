@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :file_mail, dependent: :destroy
   # has_many :travel, dependent: :destroy
+  has_many :tours, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -11,6 +12,7 @@ class User < ApplicationRecord
     # Custom validate
     validates :first_name, presence: true
     validates :last_name, presence: true
+    validates :telephone, presence: true
     validates :password_confirmation, presence: true, length: { minimum:6, maximum: 12 }, if: :is_user?
     validates :password, presence: true, length: { minimum:6, maximum: 12 }, if: :is_user?
 	  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }

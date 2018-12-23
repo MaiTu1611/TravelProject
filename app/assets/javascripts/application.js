@@ -20,18 +20,17 @@ $(function() {
 
 function ConfirmDialog(link) {
     $('<div></div>').appendTo('body')
-    .html('<div><h6>'+message+'?</h6></div>')
+    .html('<div><h6>Are you sure?</h6></div>')
     .dialog({
-        modal: true, title: 'Message', zIndex: 10000, autoOpen: true,
+        modal: true, title: 'Confirm', zIndex: 10000, autoOpen: true,
         width: '300', resizable: false,
         buttons: {
             Yes: function () {
-                window.location.href = link;
+                location.href = link;
                 $(this).remove();
                 return true;
             },
             No: function () { 
-                alert("No");
                 $(this).remove();                                                              
                 return false;
             }
