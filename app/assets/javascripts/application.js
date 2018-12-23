@@ -16,46 +16,23 @@
 //= require_tree
 //= require bootstrap
 $(function() {
-    $(".regist").click(function() {
-    	$('<div></div>').appendTo('body')
-    .html('<div><h6>Are you sure?</h6></div>')
+});
+
+function ConfirmDialog(link) {
+    $('<div></div>').appendTo('body')
+    .html('<div><h6>'+message+'?</h6></div>')
     .dialog({
         modal: true, title: 'Message', zIndex: 10000, autoOpen: true,
         width: '300', resizable: false,
         buttons: {
             Yes: function () {
-            	window.location.href = '<%= travel_path(:id => @travel.id) %>';
-            	$(this).remove();
+                window.location.href = link;
+                $(this).remove();
                 return true;
             },
             No: function () { 
-            	alert("No");
-            	$(this).remove();                                                              
-                return false;
-            }
-        },
-        close: function (event, ui) {
-            $(this).remove();
-            return false;
-        }
-    });
-	});
-	
-
-
-});
-
-function ConfirmDialog(message) {
-    $('<div></div>').appendTo('body')
-    .html('<div><h6>'+message+'?</h6></div>')
-    .dialog({
-        modal: true, title: 'Message', zIndex: 10000, autoOpen: true,
-        width: 'auto', resizable: false,
-        buttons: {
-            Yes: function () {
-                return true;
-            },
-            No: function () {                                                                 
+                alert("No");
+                $(this).remove();                                                              
                 return false;
             }
         },

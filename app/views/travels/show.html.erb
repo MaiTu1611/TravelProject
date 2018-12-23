@@ -21,7 +21,7 @@
 		  	<strong>Ngày khởi hành:</strong>
 		  	<%= @travel.time_go %>
 		</p>
-		<button type="button" class="regist btn btn-default btn-sm" onclick="">
+		<button type="button" class="regist btn btn-default btn-sm" onclick="ConfirmDialog(<%= travel_path(:id => @travel.id) %>)">
           <span class="glyphicon glyphicon-circle-arrow-right"></span> Đăng Kí Tour
         </button>
     </div>
