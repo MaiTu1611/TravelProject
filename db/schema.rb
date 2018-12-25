@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20181222112213) do
   create_table "tours", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
     t.integer "user_id"
     t.integer "travel_id"
+    t.boolean "status" , default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

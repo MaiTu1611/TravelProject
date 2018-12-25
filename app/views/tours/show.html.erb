@@ -1,13 +1,16 @@
-<p id="notice"><%= notice %></p>
+<br>
 
 <p>
-  <strong>User:</strong>
-  <%= @tour.user_id %>
+  <strong>Người đăng kí:</strong>
+  <%= @tour.user.first_name + ' ' + @tour.user.last_name %>
 </p>
 
 <p>
-  <strong>Travel:</strong>
-  <%= @tour.travel_id %>
+  <strong>Tour:</strong>
+  <%= @tour.travel.name_tour %>
 </p>
 
-<%= link_to 'Edit', edit_tour_path(@tour) %> |
+<p>
+  <strong>Trạng thái:</strong>
+  <%= parse_category(@tour.status)%>
+</p>

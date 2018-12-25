@@ -5,25 +5,27 @@
       <%= raw @travel.details %>
     </div>
     <div class="col-sm-3">
-    	<h3>Thông tin</h3>
-      	<p>
-      	    <i class="icon-tag"></i>
-		  	<strong>Giá:</strong>
-		  	<%= @travel.price %>
-    	</p>
-    	<p>
-    		<i class="icon-tag"></i>
-		  	<strong>Thời gian:</strong>
-		  	<%= @travel.date %>
-		</p>
-		<p>
-    		<i class="icon-tag"></i>
-		  	<strong>Ngày khởi hành:</strong>
-		  	<%= @travel.time_go %>
-		</p>
-		<button type="button" class="regist btn btn-default btn-sm" onclick="ConfirmDialog('<%= new_tour_path(:travel_id => @travel.id) %>');">
+        <table class="table table-hover table-bordered" style="background: white;">
+            <tr class="text-center center-button">
+              <td colspan="2" class="text-center center-button h3">Thông tin</td>
+            </tr>
+            <tr>
+              <th>Giá:</th>
+              <td><%= @travel.price %></td>
+            </tr>
+            <tr>
+              <th>Thời gian:</th>
+              <td><%= @travel.date %></td>
+            </tr>
+            <tr>
+              <th>Ngày khởi hành:</th>
+              <td><%= @travel.time_go %></td>
+            </tr>
+        </table>
+        <button type="button" class="regist btn btn-success btn-sm" onclick="ConfirmDialog('<%= new_tour_path(:travel_id => @travel.id) %>');">
           <span class="glyphicon glyphicon-circle-arrow-right"></span> Đăng Kí Tour
         </button>
+    </div>
     </div>
   </div>
 </div>

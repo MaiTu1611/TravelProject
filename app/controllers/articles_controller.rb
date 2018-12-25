@@ -45,7 +45,6 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    byebug
     @article = Article.new(article_params)
 
     # Check file before get
@@ -59,7 +58,6 @@ class ArticlesController < ApplicationController
       # Set name file to create to DB
       @article.file = file_upload.original_filename
     end
-    byebug
 
     respond_to do |format|
       if @article.save

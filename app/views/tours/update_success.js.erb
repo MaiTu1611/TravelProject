@@ -1,0 +1,24 @@
+// Show dialog success
+var dialog = '<div id="myModal" class="modal fade in" style="display: block;">'+
+'<div class="modal-dialog modal-confirm">'+
+'<div class="modal-content">'+
+'<div class="modal-header">'+
+'<div class="icon-box">'+
+'<i class="material-icons"><span class="glyphicon glyphicon-ok"></span></i>'+
+'</div>'+
+'<h4 class="modal-title">Cập nhật thành công!</h4>'+
+'</div>'+
+'<div class="modal-body">'+
+'<p class="text-center">Bạn đã đăng kí thành công, hãy chờ xác nhận nhé.</p>'+
+'</div>'+
+'<div class="modal-footer">'+
+'<button class="btn btn-success btn-block" data-dismiss="modal">OK</button>'+
+'</div>'+
+'</div>'+
+'</div>'+
+'</div>';
+$('body').append(dialog);
+$('#myModal button').click(function (argument) {
+  /* body... */
+  window.location.href = "<%= root_path %>";
+});

@@ -22,7 +22,6 @@ class ToursController < ApplicationController
 
   # GET /tours/1/edit
   def edit
-    byebug
     @travel = Travel.find(params[:travel_id])
   end
 
@@ -35,8 +34,7 @@ class ToursController < ApplicationController
 
     respond_to do |format|
       if @tour.save
-        format.html { redirect_to root_path, notice: 'Tour was successfully created.' }
-        format.json { render :show, status: :created, location: @tour }
+        format.js{ render 'create_success'}
       else
         format.html { render :new }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
@@ -76,5 +74,6 @@ class ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
+      params.require(:tour).permit(:status)
     end
 end

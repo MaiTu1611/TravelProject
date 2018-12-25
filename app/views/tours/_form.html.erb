@@ -1,4 +1,4 @@
-<%= form_for [@travel, @tour], local: true do |form| %>
+<%= form_for [@travel, @tour], local: true, remote: :true do |form| %>
   <% if tour.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tour.errors.count, "error") %> prohibited this tour from being saved:</h2>
@@ -41,7 +41,22 @@
         <%= @travel.time_go %>
     </div>
 
-  <div class="actions">
-    <%= form.submit 'Đăng kí'%>
-  </div>
+  <% if current_user.has_role? %>
+    <div class="field">
+      <span>Trạng thái:</span>
+      <%= form.select(:status, STATUS_TOUR, :selected => @tour.status)%>
+    </div>
+  <% else %>
+    <%= form.hidden_field :status, :value => 0 %>
+  <% end %>
+
+  <% if current_user.has_role? %>
+    <div class="actions">
+      <%= form.submit 'Cập nhật'%>
+    </div>
+  <% else %>
+    <div class="actions">
+      <%= form.submit 'Đăng kí'%>
+    </div>
+  <% end %>
 <% end %>

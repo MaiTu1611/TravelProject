@@ -1,5 +1,9 @@
 class WelcomeController < ApplicationController
   	def index
-  		@travels = Travel.all
+  		if !params[:search].blank?
+  			@travels = Travel.search(params[:search])
+	    else
+	      	@travels = Travel.all
+	    end
   	end
 end

@@ -15,8 +15,6 @@
 //= require turbolinks
 //= require_tree
 //= require bootstrap
-$(function() {
-});
 
 function ConfirmDialog(link) {
     $('<div></div>').appendTo('body')

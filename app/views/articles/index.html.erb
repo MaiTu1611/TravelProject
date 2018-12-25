@@ -1,9 +1,10 @@
-<br>
-<h1 style="color: white;">Admin Manage</h1>
+<div class="blog-content">
+<!-- <br> -->
+<!-- <h1>Admin Manage</h1> -->
 <%= form_tag articles_path, :method => 'get' do %>
 <p>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", title: :nil %>
+  <%= text_field_tag :search, params[:search], :class => "search_tour" , :placeholder => "Search.."%>
+  <!-- <%= submit_tag "Search", title: :nil %> -->
 </p>
 <% end %>
 <!-- Article -->
@@ -12,17 +13,19 @@
 <!-- Tour -->
 <% if ((can? :manage, @tours) && @tours.length > 0)%>
 <br>
-<h3 style="color: white;">All Tour</h3>
-<table class="table table-hover" style="background: white;">
+<div class="questions">
+<h3 style="color: white;">Tour Manage</h3>
+<table class="table table-hover table-bordered" style="background: white;">
   <thead>
     <tr>
-      <th>Chuyến đi</th>
-      <th>Thời gian</th>
-      <th>Ngày khởi hành</th>
-      <th>Giá</th>
-      <th>Người đặt</th>
-      <th>SDT</th>
-      <th>Xoá</th>
+      <th class="text-center">Chuyến đi</th>
+      <th class="text-center">Thời gian</th>
+      <th class="text-center">Ngày khởi hành</th>
+      <th class="text-center">Giá</th>
+      <th class="text-center">Người đặt</th>
+      <th class="text-center">SDT</th>
+      <th class="text-center">Trạng thái</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -34,18 +37,20 @@
 <div id="paginator_tours">
   <%= paginate @tours, param_name: :page_tour, remote: true %>
 </div>
+</div>
 <% end %>
 
 <!-- Question -->
 <% if ((can? :manage , @questions) && @questions.length > 0)%>
 <br>
-<h3 style="color: white;">All Question</h3>
-<table class="table table-hover" style="background: white;">
+<div class="questions">
+<h3 style="color: white;">Question Manage</h3>
+<table class="table table-hover table-bordered" style="background: white;">
   <thead>
     <tr>
-      <th>Content</th>
-      <th>Answers</th>
-      <th colspan="3"></th>
+      <th class="text-center">Content</th>
+      <th class="text-center">Answers</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -55,23 +60,26 @@
 </table>
 <br>
 <div class="button_linkto">
-  <%= link_to 'New Question', new_question_path %>
+  <%= link_to 'New Question', new_question_path, :class => "btn" %>
 </div>
 <div id="paginator_questions">
   <%= paginate @questions, param_name: :page_question, remote: true %>
+</div>
 </div>
 <% end %>
 
 <!-- User -->
 <% if ((can? :manage, @users) && (@users.length > 0 ))%>
 <br>
-<h3 style="color: white;">All User</h3>
-<table class="table table-hover" style="background: white;">
+<div class="questions">
+<h3 style="color: white;">User Manage</h3>
+<table class="table table-hover table-bordered" style="background: white;">
   <thead>
     <tr>
-      <th colspan="2">Name</th>
-      <th>Email</th>
-      <th colspan="4"></th>
+      <th colspan="2"  class="text-center">Name</th>
+      <th class="text-center">Email</th>
+      <th class="text-center">Telephone</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -82,4 +90,6 @@
 <div id="paginator_users">
   <%= paginate @users, param_name: :page_user, remote: true %>
 </div>
+</div>
 <% end %>
+</div>

@@ -27,7 +27,6 @@ class SendMailsController < ApplicationController
     @send_mail = SendMail.new(send_mail_params)
 
     @user_send_mail = User.where('email = ?', params[:send_mail][:mail_to]).first
-    byebug
     UserMailer.welcome_email(@user_send_mail).deliver_now
 
     respond_to do |format|

@@ -117,7 +117,8 @@ body {
 	font-family: $font-primary;
 	line-height: 1.6;
 	font-size: 16px;
-	background: lighten($brand-black, 7%);
+	background: white;
+	margin: 0;
 	color: #848484;
 	font-weight: 300;
 	overflow-x: hidden;
@@ -1120,3 +1121,21 @@ figure {
 }
 
 
+.questions {
+	border: 1px solid;
+    border-radius: 5px;
+    padding: 30px;
+    background: lighten($brand-black, 7%);
+}
+
+.question-title {
+	color: white;
+}
+
+.blog-content {
+	margin: 30px;
+}
+
+.center-button {
+    vertical-align: middle !important;
+}

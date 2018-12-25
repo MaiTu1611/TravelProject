@@ -5,7 +5,6 @@ class UserMailer < ApplicationMailer
     @user = user
     @url  = 'http://example.com/login'
     attachments['RubyOnRails_V1.12.xlsx'] = File.read('public/files/RubyOnRails_V1.12.xlsx', mode: "rb")
-    byebug
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
 end

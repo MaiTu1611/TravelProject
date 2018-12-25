@@ -1,6 +1,5 @@
-;(function () {
-	
-	'use strict';
+$(document).on('turbolinks:load', function(event) {
+  	'use strict';
 
 
 
@@ -136,4 +135,7 @@
 
 	});
 
-}());
+	$(".travel-image").click(function() {
+	    location.href = $(this).attr("data-travel");
+	});
+});
