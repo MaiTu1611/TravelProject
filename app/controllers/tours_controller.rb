@@ -6,7 +6,7 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = current_user.tours.includes(:travel).all
+    @tours = current_user.tours.joins(:travel).all
   end
 
   # GET /tours/1

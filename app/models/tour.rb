@@ -13,7 +13,7 @@ class Tour < ApplicationRecord
 	  # search
 	  def self.search(search)
 	    if search
-	   	  	Tour.includes(:travel).where(travels: {name_tour: search})
+	   	  	Tour.joins(:travel).where("travels.name_tour LIKE ?", "%#{search}%")
 	    else
 	      	Tour.all
 	    end

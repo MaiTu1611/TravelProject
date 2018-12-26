@@ -1,4 +1,6 @@
+<div class="login">
 <%= form_with(model: user, local: true) do |form| %>
+  <div class="container">
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -38,9 +40,11 @@
   <% end %>
 
   <% if current_user == @user%>
-    <%= link_to "Change your password", edit_user_registration_path %>
+    <%= link_to "Change your password", edit_user_registration_path, :style => "color: gray;" %>
   <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>
+</div>
 <% end %>
+</div>

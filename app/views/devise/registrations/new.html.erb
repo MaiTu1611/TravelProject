@@ -1,7 +1,11 @@
-<h2>Sign up</h2>
-
+<div class="login">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  <div class="imgcontainer">
+    <%= image_tag("img_avatar2.png", :alt => "Avatar", :class => "avatar" ) %>
+  </div>
+
+  <div class="container">
 
   <div class="field">
     <%= f.label :first_name %><br />
@@ -39,6 +43,8 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
+<% end %>
+</div>
