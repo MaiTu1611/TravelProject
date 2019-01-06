@@ -30,10 +30,12 @@ gem 'bootstrap3-rails'
 # upload/download
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
 gem 'file_validators'
 # Ajax
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "search_cop"
 # Enveriment variable
 gem 'figaro'

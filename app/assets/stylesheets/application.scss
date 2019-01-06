@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require bootstrap
+ *= require jquery-ui
+ *= require jquery-ui/datepicker
  */
 .sign_in {
 	border: 1px solid;
@@ -72,7 +74,7 @@
 
 .login form {border: 3px solid #f1f1f1;}
 
-.login input[type=text], .login input[type=email],.login  input[type=password] {
+.login input[type=number], .login input[type=text], .login input[type=email],.login  input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;

@@ -1,4 +1,4 @@
-<tr>
+<tr id="<%= 'tour-' + tour.id.to_s %>">
   	<td><%= tour.travel.name_tour %></td>
 	<td><%= tour.travel.date %></td>
 	<td><%= tour.travel.time_go %></td>
@@ -8,6 +8,6 @@
 	<% if current_user.has_role? %>
 		<td><%= parse_category(tour.status)%></td>
 	<% end %>
-	<td class="text-center center-button"><%= link_to 'Sửa', edit_tour_path(tour, :travel_id => tour.travel.id) , :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
-	<td class="text-center center-button"><%= link_to 'Xoá', tour, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
+	<td class="text-center center-button"><%= link_to 'Sửa', edit_tour_path(tour, :travel_id => tour.travel.id) , method: :get, :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
+	<td class="text-center center-button"><%= link_to 'Xoá', {controller: "articles", action: "destroy_tour", id_destroy_tour: tour}, remote: :true, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
 </tr>

@@ -40,6 +40,36 @@
 </div>
 <% end %>
 
+<!-- Tour -->
+<% if current_user.has_role? %>
+<br>
+<div class="questions">
+<h3 style="color: white;">Travel Manage</h3>
+<table class="table table-hover table-bordered" style="background: white;">
+  <thead>
+    <tr>
+      <th class="text-center">Ten</th>
+      <th class="text-center">Gia</th>
+      <th class="text-center">So ngay</th>
+      <th class="text-center">Ngay khoi hanh</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody id="travels">
+    <%= render @travels %>
+  </tbody>
+</table>
+<br>
+<div class="button_linkto">
+  <%= link_to 'New Travel', new_travel_path, :class => "btn" %>
+</div>
+<div id="paginator_travels">
+  <%= paginate @travels, param_name: :page_travel, remote: true %>
+</div>
+</div>
+<% end %>
+
 <!-- Question -->
 <% if ((can? :manage , @questions) && @questions.length > 0)%>
 <br>

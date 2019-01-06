@@ -1,0 +1,8 @@
+<tr>
+  <td><%= travel.name_tour %></td>
+  <td><%= travel.price %></td>
+  <td><%= travel.date %></td>
+  <td><%= travel.time_go %></td>
+  <td class="text-center center-button"><%= link_to 'Sửa', edit_travel_path(travel) , :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
+  <td class="text-center center-button"><%= link_to 'Xoá', travel, method: :delete, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
+</tr>

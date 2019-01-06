@@ -28,7 +28,12 @@
 
   <div class="field">
     <%= form.label :time_go %>
-    <%= form.time_select :time_go, id: :travel_time_go %>
+    <%= form.text_field :time_go, id: :travel_time_go, :class => "datepicker" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br>
+    <%= form.text_area :details, class: "ckeditor" %>
   </div>
 
   <div class="actions">

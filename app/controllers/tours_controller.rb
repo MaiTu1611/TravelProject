@@ -6,7 +6,7 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
-    @tours = current_user.tours.joins(:travel).all
+      @tours = current_user.tours.joins(:travel).all
   end
 
   # GET /tours/1
@@ -61,8 +61,8 @@ class ToursController < ApplicationController
   def destroy
     @tour.destroy
     respond_to do |format|
-      format.html { redirect_to tours_url, notice: 'Tour was successfully destroyed.' }
-      format.json { head :no_content }
+      @tours = current_user.tours.joins(:travel).all
+      format.js {}
     end
   end
 

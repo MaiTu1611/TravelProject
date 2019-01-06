@@ -12,9 +12,12 @@
 //
 //= require rails-ujs
 //= require jquery.min
-//= require turbolinks
-//= require_tree
 //= require bootstrap
+//= require jquery-ui
+//= require jquery-ui/widgets/datepicker
+//= require turbolinks
+//= require ckeditor/init
+//= require_tree
 
 function ConfirmDialog(link) {
     $('<div></div>').appendTo('body')

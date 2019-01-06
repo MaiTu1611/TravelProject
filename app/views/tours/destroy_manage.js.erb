@@ -1,4 +1,4 @@
-// $("#<%='article-' + @article.id.to_s%>").remove(); 
-/*reponse ajax users*/
+// $("#table_tours").html("<%= j render 'tours/tour_table_manage' %>")
+// /*reponse ajax users*/
 $("#tours").html("<%= j render(@tours) %>");
 $("#paginator_tours").html("<%= j paginate(@tours, remote: true, param_name: :page_tour) %>");

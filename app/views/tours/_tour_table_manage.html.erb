@@ -1,0 +1,40 @@
+<table class="table table-hover table-bordered" style="background: white;" id="table_tours">
+  <thead>
+    <tr>
+      <th class="text-center">Chuyến đi</th>
+      <th class="text-center">Thời gian</th>
+      <th class="text-center">Ngày khởi hành</th>
+      <th class="text-center">Giá</th>
+      <th class="text-center">SDT</th>
+      <% if current_user.has_role? %>
+          <th class="text-center">Nguoi dat</th>
+        <%end%>
+      <th class="text-center">Trạng thái</th>
+      <th></th>
+      <% if current_user.has_role? %>
+          <th></th>
+        <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tours.each do |tour| %>
+      <tr>
+        <td><%= tour.travel.name_tour %></td>
+        <td><%= tour.travel.date %></td>
+        <td><%= tour.travel.time_go %></td>
+        <td><%= tour.travel.price %></td>
+        <td><%= current_user.telephone %></td>
+        <% if current_user.has_role? %>
+          <td><%= tour.user.first_name + ' ' + tour.user.last_name %></td>
+        <%end%>
+        <td><%= parse_category(tour.status)%></td>
+        <% if current_user.has_role? %>
+        <td><%= tour.user.first_name + ' ' + tour.user.last_name %></td>
+          <td class="text-center center-button"><%= link_to 'Sửa', edit_tour_path(tour, :travel_id => tour.travel.id) , :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
+        <% end %>
+        <td class="text-center center-button"><%= link_to 'Xoá', tour_path(:is_manage_tour => 1), method: :delete, remote: :true, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

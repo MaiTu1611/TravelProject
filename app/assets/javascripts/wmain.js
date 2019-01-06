@@ -138,4 +138,6 @@ $(document).on('turbolinks:load', function(event) {
 	$(".travel-image").click(function() {
 	    location.href = $(this).attr("data-travel");
 	});
+
+  $(".datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd ");
 });
