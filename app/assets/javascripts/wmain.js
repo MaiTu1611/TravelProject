@@ -140,4 +140,10 @@ $(document).on('turbolinks:load', function(event) {
 	});
 
   $(".datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd ");
+
+  // if ($('textarea').length > 0) {
+    var data = $('.ckeditor');
+    $.each(data, function(i) {
+    });
+  // }
 });
