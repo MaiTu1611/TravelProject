@@ -4,7 +4,7 @@ class Question < ApplicationRecord
 
     def self.search(search)
     if search
-      Question.where('(content = ?)', search)
+      Question.where("questions.content LIKE ?", "%#{search}%")
     else
       Question.all
     end

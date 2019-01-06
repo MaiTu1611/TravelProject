@@ -22,17 +22,31 @@ class ArticlesController < ApplicationController
     @@page_tour     = params[:page_tour].nil? ? 1 : params[:page_tour]
     @@page_travel   = params[:page_travel].nil? ? 1 : params[:page_travel]
     if params[:search]
-      @articles     = Article.search(params[:search]).page(@@page_article).per(3)
-      @questions    = Question.search(params[:search]).page(@@page_question).per(3)
-      @users        = User.search(params[:search]).page(@@page_user).per(3).where.not(id: @user.id)
-      @tours        = Tour.search(params[:search]).page(@@page_tour).per(3)
-      @travels      = Travel.search(params[:search]).page(@@page_travel).per(3)
+      @articles     = Article.search(params[:search]).page(@@page_article).per(PAGE_RECORD)
+      @questions    = Question.search(params[:search]).page(@@page_question).per(PAGE_RECORD)
+      @users        = User.search(params[:search]).page(@@page_user).per(PAGE_RECORD).where.not(id: @user.id)
+      @tours        = Tour.search(params[:search]).page(@@page_tour).per(PAGE_RECORD)
+      @travels      = Travel.search(params[:search]).page(@@page_travel).per(PAGE_RECORD)
     else
-      @articles     = Article.page(@@page_article).per(3)
-      @questions    = Question.page(@@page_question).per(3)
-      @tours        = Tour.page(@@page_tour).per(3)
-      @travels      = Travel.page(@@page_travel).per(3)
-      @users        = User.page(@@page_user).per(3).where.not(id: @user.id)
+      @articles     = Article.page(@@page_article).per(PAGE_RECORD)
+      @questions    = Question.page(@@page_question).per(PAGE_RECORD)
+      @tours        = Tour.page(@@page_tour).per(PAGE_RECORD)
+      @travels      = Travel.page(@@page_travel).per(PAGE_RECORD)
+      @users        = User.page(@@page_user).per(PAGE_RECORD).where.not(id: @user.id)
+    end
+  end
+
+  # GET /articles
+  # GET /articles.json
+  def search_tour
+    status_param = params[:status]
+    if status_param.to_i == -1
+      @tours        = Tour.page(@@page_tour).per(PAGE_RECORD)
+    else
+      @tours        = Tour.where("tours.status LIKE ?", params[:status]).page(@@page_tour).per(PAGE_RECORD)
+    end
+    respond_to do |format|
+      format.js {}
     end
   end
 
@@ -98,7 +112,7 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     # Check destroy last record
-    @articles = Article.page(@@page_article).per(3)
+    @articles = Article.page(@@page_article).per(PAGE_RECORD)
     # if destroy last record
     if @articles.length == 0 
       page_article = (page_article.to_i - 1) > 1 ? page_article.to_i - 1 : 1  
@@ -120,11 +134,33 @@ class ArticlesController < ApplicationController
     @tour.destroy
 
     # Check destroy last record
-    @tours = Tour.page(@@page_tour).per(3)
+    @tours = Tour.page(@@page_tour).per(PAGE_RECORD)
     # if destroy last record
     if @tours.length == 0 
       page_tour = (page_tour.to_i - 1) > 1 ? page_tour.to_i - 1 : 1  
       redirect_to articles_path(page_tour: page_tour)
+    end
+
+    respond_to do |format|
+      # Using ajax when delete article
+      format.js {}
+      # format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      # format.json { head :no_content }
+    end
+  end
+
+  # DELETE /articles/1
+  # DELETE /articles/1.json
+  def destroy_travel
+    @travel = Travel.find(params[:id_destroy_travel])
+    @travel.destroy
+
+    # Check destroy last record
+    @travels = Travel.page(@@page_travel).per(PAGE_RECORD)
+    # if destroy last record
+    if @travels.length == 0 
+      page_travel = (page_travel.to_i - 1) > 1 ? page_travel.to_i - 1 : 1  
+      redirect_to articles_path(page_tour: page_travel)
     end
 
     respond_to do |format|

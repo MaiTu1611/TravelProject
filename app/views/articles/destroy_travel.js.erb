@@ -1,0 +1,2 @@
+$("#travels").html("<%= j render(@travels) %>");
+$("#paginator_travels").html("<%= j paginate(@travels, remote: true, param_name: :page_travel) %>");

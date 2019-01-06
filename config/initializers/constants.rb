@@ -3,3 +3,5 @@ STATUS_TOUR = [
   ['Đã Duyệt', 1],
   ['Hủy', 2]
 ]
+
+PAGE_RECORD = 10

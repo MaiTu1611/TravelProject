@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 20181222112213) do
 
   create_table "travels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
     t.string "name_tour"
-    t.integer "price"
+    t.bigint "price"
     t.string "date"
     t.date "time_go"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image", limit: 45
+    t.string "file", limit: 255
     t.text "details", limit: 4294967295
   end
 

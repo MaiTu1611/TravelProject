@@ -1,16 +1,18 @@
-<br>
+<div class="login">
+  <div class="container">
+    <p>
+      <strong>Người đăng kí:</strong>
+      <%= @tour.user.first_name + ' ' + @tour.user.last_name %>
+    </p>
 
-<p>
-  <strong>Người đăng kí:</strong>
-  <%= @tour.user.first_name + ' ' + @tour.user.last_name %>
-</p>
+    <p>
+      <strong>Tour:</strong>
+      <%= @tour.travel.name_tour %>
+    </p>
 
-<p>
-  <strong>Tour:</strong>
-  <%= @tour.travel.name_tour %>
-</p>
-
-<p>
-  <strong>Trạng thái:</strong>
-  <%= parse_category(@tour.status)%>
-</p>
+    <p>
+      <strong>Trạng thái:</strong>
+      <%= parse_category(@tour.status)%>
+    </p>
+  </div>
+</div>

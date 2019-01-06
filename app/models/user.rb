@@ -59,7 +59,7 @@ class User < ApplicationRecord
   # search
   def self.search(search)
     if search
-   	  	User.where(first_name: search)
+   	  	User.where("users.first_name LIKE ?", "%#{search}%").or(User.where("users.last_name LIKE ?", "%#{search}%"))
     else
       	User.all
     end

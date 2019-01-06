@@ -6,6 +6,7 @@ class Travel < ApplicationRecord
   validates :date, presence: true
   validates :time_go, presence: true
   validates :details, presence: true
+  validates :file, presence: true, on: :create
 
 		  # search
 	 def self.search(search)

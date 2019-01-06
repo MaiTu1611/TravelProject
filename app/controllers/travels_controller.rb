@@ -28,6 +28,17 @@ class TravelsController < ApplicationController
   # POST /travels.json
   def create
     @travel = Travel.new(travel_params)
+    # Check file before get
+    if params[:travel][:file] != nil
+      # Get file attached
+      file_upload = params[:travel][:file]
+      # Write file to public/files with original file name
+      File.open(Rails.root.join('app/assets','images', file_upload.original_filename), "wb") do |file| 
+         file.write(file_upload.read)
+      end
+      # Set name file to create to DB
+      @travel.file = file_upload.original_filename
+    end
 
     respond_to do |format|
       if @travel.save
@@ -45,6 +56,18 @@ class TravelsController < ApplicationController
   def update
     respond_to do |format|
       if @travel.update(travel_params)
+        # Check file before get
+        if params[:travel][:file] != nil
+          # Get file attached
+          file_upload = params[:travel][:file]
+          # Write file to public/files with original file name
+          File.open(Rails.root.join('app/assets','images', file_upload.original_filename), "wb") do |file| 
+             file.write(file_upload.read)
+          end
+          # Set name file to create to DB
+          @travel.update_attribute(:file, file_upload.original_filename)
+        end
+
         format.html { redirect_to @travel, notice: 'Travel was successfully updated.' }
         format.json { render :show, status: :ok, location: @travel }
       else
@@ -72,6 +95,10 @@ class TravelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_params
-      params.require(:travel).permit(:name_tour, :price, :date, :time_go, :details)
+      params.require(:travel).permit(:name_tour, :price, :date, :time_go, :details, :file)
+    end
+
+    def travel_params_update
+      params.require(:travel).permit(:name_tour, :price, :date, :time_go, :details, :file => [:original_filename])
     end
 end

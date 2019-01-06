@@ -5,7 +5,7 @@
 						<div class="col-md-4 col-sm-4 fh5co-item-wrap">
 						<a class="fh5co-listing-item" href="<%= travel_path(:id => travel.id) %>">
 							<!-- <img src="images/img-1.jpg" alt="Free HTML5 Bootstrap Template by FreeHTML5.co" class="img-responsive"> -->
-							<%= image_tag(travel.image, :alt => "rss feed", :class => "img-responsive travel-image", :data => {:travel => travel_path(:id => travel.id)} ) %>
+							<%= image_tag(travel.file, :alt => "rss feed", :class => "img-responsive travel-image", :style => "width: 700px; height: 380px;", :data => {:travel => travel_path(:id => travel.id)} ) %>
 							<div class="fh5co-listing-copy">
 								<h2 onclick="location.href='<%= travel_path(:id => travel.id) %>'"><%= travel.name_tour %></h2>
 								<span class="icon" onclick="location.href='<%= travel_path(:id => travel.id) %>'">

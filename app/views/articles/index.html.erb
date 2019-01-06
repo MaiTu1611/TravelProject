@@ -4,7 +4,6 @@
 <%= form_tag articles_path, :method => 'get' do %>
 <p>
   <%= text_field_tag :search, params[:search], :class => "search_tour" , :placeholder => "Search.."%>
-  <!-- <%= submit_tag "Search", title: :nil %> -->
 </p>
 <% end %>
 <!-- Article -->
@@ -15,6 +14,7 @@
 <br>
 <div class="questions">
 <h3 style="color: white;">Tour Manage</h3>
+<%= select_tag "Status", options_for_select(STATUS_TOUR), include_blank: "All"%>
 <table class="table table-hover table-bordered" style="background: white;">
   <thead>
     <tr>
@@ -41,7 +41,7 @@
 <% end %>
 
 <!-- Tour -->
-<% if current_user.has_role? %>
+<% if current_user.has_role? && @travels.length > 0 %>
 <br>
 <div class="questions">
 <h3 style="color: white;">Travel Manage</h3>

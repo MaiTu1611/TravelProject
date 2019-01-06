@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.page(params[:page]).per(3)
+    @questions = Question.page(params[:page]).per(PAGE_RECORD)
   end
 
   # GET /questions/1

@@ -23,12 +23,17 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.number_field :date, id: :travel_date %>
+    <%= form.text_field :date, id: :travel_date %>
   </div>
 
   <div class="field">
     <%= form.label :time_go %>
-    <%= form.text_field :time_go, id: :travel_time_go, :class => "datepicker" %>
+    <%= form.text_field :time_go, id: :travel_time_go, :class => "datepicker", :readOnly => "readOnly" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.file_field :file, id: :travel_file %>
   </div>
 
   <div class="field">

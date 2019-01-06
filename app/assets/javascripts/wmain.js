@@ -139,11 +139,26 @@ $(document).on('turbolinks:load', function(event) {
 	    location.href = $(this).attr("data-travel");
 	});
 
-  $(".datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd ");
+  $(".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).val();
 
-  // if ($('textarea').length > 0) {
+  if ($('textarea').length > 0) {
     var data = $('.ckeditor');
     $.each(data, function(i) {
+      CKEDITOR.replace(data[i].id)
     });
-  // }
+  }
+
+  $('#Status').change(function(){
+    var status = $("#Status").val();
+    if (status == "" || status == undefined) status = -1;
+    $.ajax({
+        url: "articles/search_tour/" + status,
+        // data: { "status": $("#Status").val() },
+        dataType:"script",
+        type: "get",
+        success: function(data){
+           $('#Status').append(data);
+        }
+    });
+  });
 });

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   	get 'user/index_update_password'=>'users#index_update_password', as: 'user_index_update_password'
     get 'user/send_mail'=>'users#send_mail', as: 'user_send_mail'
     get 'articles/delete_tour/:id_destroy_tour'=>'articles#destroy_tour', as: 'destroy_tour'
+    get 'articles/delete_travel/:id_destroy_travel'=>'articles#destroy_travel', as: 'destroy_travel'
+    get 'articles/search_tour/:status'=>'articles#search_tour', as: 'search_tour'
   	root to: 'welcome#index'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
