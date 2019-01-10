@@ -7,6 +7,6 @@
       <%= render question.answers%>
     <% end %>
   </td>
-  <td class="text-center center-button"><%= link_to 'Sửa', edit_question_path(question) , :style => "color: white;" , :class => "btn btn-success btn-xs" %></td>
-  <td class="text-center center-button"><%= link_to 'Xóa', question, method: :delete, data: { confirm: 'Are you sure?' } , :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
+  <td class="text-center center-button button-edit-del"><%= link_to 'Sửa', edit_question_path(question) , :style => "color: white;" , :class => "btn btn-success btn-xs" %></td>
+  <td class="text-center center-button button-edit-del"><%= link_to 'Xóa', question, method: :delete, data: { confirm: 'Are you sure?' } , :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
 </tr>

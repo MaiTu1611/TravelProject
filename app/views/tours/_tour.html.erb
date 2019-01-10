@@ -2,12 +2,13 @@
   	<td><%= tour.travel.name_tour %></td>
 	<td><%= tour.travel.date %></td>
 	<td><%= tour.travel.time_go %></td>
-	<td><%= tour.travel.price %></td>
+	<td><%= number_to_vnd(tour.travel.price) %></td>
 	<td><%= tour.user.first_name + ' ' + tour.user.last_name %></td>
 	<td><%= tour.user.telephone %></td>
 	<% if current_user.has_role? %>
 		<td><%= parse_category(tour.status)%></td>
 	<% end %>
-	<td class="text-center center-button"><%= link_to 'Sửa', edit_tour_path(tour, :travel_id => tour.travel.id) , method: :get, :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
-	<td class="text-center center-button"><%= link_to 'Xoá', {controller: "articles", action: "destroy_tour", id_destroy_tour: tour}, remote: :true, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
+	<td><%= tour.created_at %></td>
+	<td class="text-center center-button button-edit-del"><%= link_to 'Sửa', edit_tour_path(tour, :travel_id => tour.travel.id) , method: :get, :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
+	<td class="text-center center-button button-edit-del"><%= link_to 'Xoá', {controller: "articles", action: "destroy_tour", id_destroy_tour: tour}, remote: :true, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
 </tr>

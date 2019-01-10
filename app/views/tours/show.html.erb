@@ -1,4 +1,7 @@
 <div class="login">
+  <div class="imgcontainer">
+    <h1>Thông tin tour</h1>
+  </div>
   <div class="container">
     <p>
       <strong>Người đăng kí:</strong>
@@ -13,6 +16,16 @@
     <p>
       <strong>Trạng thái:</strong>
       <%= parse_category(@tour.status)%>
+    </p>
+
+    <p>
+      <strong>Số người đi:</strong>
+      <%= @tour.number_person %>
+    </p>
+
+    <p>
+      <strong>Ghi chú:</strong>
+      <%= @tour.description %>
     </p>
   </div>
 </div>

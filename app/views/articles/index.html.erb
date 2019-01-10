@@ -14,7 +14,10 @@
 <br>
 <div class="questions">
 <h3 style="color: white;">Tour Manage</h3>
-<%= select_tag "Status", options_for_select(STATUS_TOUR), include_blank: "All"%>
+<div style="margin-bottom: 5px;">
+Trạng thái : <%= select_tag "Status", options_for_select(STATUS_TOUR), include_blank: "All"%>
+Ngày đăng ký : <input type="text" name="date_start" class="filter_by_date" readonly="readonly" id="filter_by_date_start"><span class="glyphicon glyphicon-transfer"></span><input type="text" name="date_end" class="filter_by_date" readonly="readonly" id="filter_by_date_end">
+</div>
 <table class="table table-hover table-bordered" style="background: white;">
   <thead>
     <tr>
@@ -25,6 +28,7 @@
       <th class="text-center">Người đặt</th>
       <th class="text-center">SDT</th>
       <th class="text-center">Trạng thái</th>
+      <th class="text-center">Ngày đăng kí</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -48,10 +52,10 @@
 <table class="table table-hover table-bordered" style="background: white;">
   <thead>
     <tr>
-      <th class="text-center">Ten</th>
-      <th class="text-center">Gia</th>
-      <th class="text-center">So ngay</th>
-      <th class="text-center">Ngay khoi hanh</th>
+      <th class="text-center">Tên Travel</th>
+      <th class="text-center">Giá</th>
+      <th class="text-center">Số ngày</th>
+      <th class="text-center">Ngày khởi hành</th>
       <th colspan="2"></th>
     </tr>
   </thead>

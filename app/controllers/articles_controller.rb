@@ -40,10 +40,12 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def search_tour
     status_param = params[:status]
+    start_date_param = params[:date_filter_start]
+    end_date_param = params[:date_filter_end]
     if status_param.to_i == -1
-      @tours        = Tour.page(@@page_tour).per(PAGE_RECORD)
+      @tours        = Tour.where(created_at: start_date_param..end_date_param).order(created_at: :desc).page(@@page_tour).per(PAGE_RECORD)
     else
-      @tours        = Tour.where("tours.status LIKE ?", params[:status]).page(@@page_tour).per(PAGE_RECORD)
+      @tours        = Tour.where(status: params[:status], created_at: start_date_param..end_date_param).order(created_at: :desc).page(@@page_tour).per(PAGE_RECORD)
     end
     respond_to do |format|
       format.js {}

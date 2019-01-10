@@ -23,7 +23,7 @@
         <td><%= tour.travel.name_tour %></td>
         <td><%= tour.travel.date %></td>
         <td><%= tour.travel.time_go %></td>
-        <td><%= tour.travel.price %></td>
+        <td><%= number_to_vnd(tour.travel.price) %></td>
         <td><%= current_user.telephone %></td>
         <% if current_user.has_role? %>
           <td><%= tour.user.first_name + ' ' + tour.user.last_name %></td>

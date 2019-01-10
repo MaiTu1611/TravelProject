@@ -28,16 +28,16 @@ class ToursController < ApplicationController
   # POST /tours
   # POST /tours.json
   def create
-    @travel = Travel.find(params[:travel_id])
-    @tour = @travel.tours.build()
+    # @travel = Travel.find(params[:travel_id])
+    @tour = Tour.new(tour_params)
+    # @tour = @travel.tours.build()
     @tour.user = current_user
 
     respond_to do |format|
       if @tour.save
         format.js{ render 'create_success'}
       else
-        format.html { render :new }
-        format.json { render json: @tour.errors, status: :unprocessable_entity }
+        format.js{ render 'create_fail'}
       end
     end
   end
@@ -49,6 +49,17 @@ class ToursController < ApplicationController
       if @tour.update(tour_params)
         format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }
         format.json { render :show, status: :ok, location: @tour }
+      else
+        format.html { render :edit }
+        format.json { render json: @tour.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def delete_tour
+    respond_to do |format|
+      if @tour.update_attribute(:status, 3)
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @tour.errors, status: :unprocessable_entity }
@@ -74,6 +85,6 @@ class ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(:status)
+      params.require(:tour).permit(:status, :number_person, :description, :travel_id)
     end
 end

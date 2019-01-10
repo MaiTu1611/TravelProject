@@ -139,7 +139,7 @@ $(document).on('turbolinks:load', function(event) {
 	    location.href = $(this).attr("data-travel");
 	});
 
-  $(".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' }).val();
+  $(".datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
 
   if ($('textarea').length > 0) {
     var data = $('.ckeditor');
@@ -151,9 +151,17 @@ $(document).on('turbolinks:load', function(event) {
   $('#Status').change(function(){
     var status = $("#Status").val();
     if (status == "" || status == undefined) status = -1;
+  	var date1 = $("#filter_by_date_start").val();
+	var date2 = $("#filter_by_date_end").val();
+	var date1Updated = new Date(date1.replace(/-/g,'/'));  
+	var date2Updated = new Date(date2.replace(/-/g,'/'));
+	if (date1Updated > date2Updated) {
+		alert("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!!!");
+		return;
+	};
     $.ajax({
         url: "articles/search_tour/" + status,
-        // data: { "status": $("#Status").val() },
+        data: { "date_filter_start": $("#filter_by_date_start").val(), "date_filter_end": $("#filter_by_date_end").val() },
         dataType:"script",
         type: "get",
         success: function(data){
@@ -161,4 +169,43 @@ $(document).on('turbolinks:load', function(event) {
         }
     });
   });
+
+  $(".filter_by_date").val(formatDate());
+
+  $(".filter_by_date").datepicker({
+  		dateFormat: 'yy-mm-dd',
+	  onSelect: function(dateText) {
+	  	var date1 = $("#filter_by_date_start").val();
+		var date2 = $("#filter_by_date_end").val();
+		var date1Updated = new Date(date1.replace(/-/g,'/'));  
+		var date2Updated = new Date(date2.replace(/-/g,'/'));
+		if (date1Updated > date2Updated) {
+			alert("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!!!");
+			return;
+		};
+	  	var status = $("#Status").val();
+	  	if (status == "" || status == undefined) status = -1;
+	    $.ajax({
+	        url: "articles/search_tour/" + status,
+	        data: { "date_filter_start": $("#filter_by_date_start").val(), "date_filter_end": $("#filter_by_date_end").val() },
+	        dataType:"script",
+	        type: "get",
+	        success: function(data){
+	           $('#Status').append(data);
+	        }
+	    });
+	  }
+	});
 });
+
+function formatDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}

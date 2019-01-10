@@ -4,12 +4,13 @@
   <thead>
     <tr>
       <th class="text-center">Chuyến đi</th>
+      <th class="text-center">Số người đi</th>
       <th class="text-center">Thời gian</th>
       <th class="text-center">Ngày khởi hành</th>
       <th class="text-center">Giá</th>
       <th class="text-center">SDT</th>
       <th class="text-center">Trạng thái</th>
-      <th></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -17,12 +18,14 @@
     <% @tours.each do |tour| %>
       <tr>
         <td><%= tour.travel.name_tour %></td>
+        <td><%= tour.number_person %></td>
         <td><%= tour.travel.date %></td>
         <td><%= tour.travel.time_go %></td>
-        <td><%= tour.travel.price %></td>
+        <td><%= number_to_vnd(tour.travel.price) %></td>
         <td><%= current_user.telephone %></td>
-        <td><%= parse_category(tour.status)%></td>
-        <td class="text-center center-button"><%= link_to 'Xoá', tour, method: :delete, remote: :true, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs"  %></td>
+        <td id="<%= 'tour-' + tour.id.to_s %>"><%= parse_category(tour.status)%></td>
+        <td class="text-center center-button button-edit-del"><%= link_to 'Sửa', edit_tour_path(tour, :travel_id => tour.travel.id) , method: :get, :style => "color: white;" , :class => "btn btn-success btn-xs"%></td>
+        <td class="text-center center-button button-edit-del"><%= link_to 'Xoá', {controller: "tours", action: "delete_tour", id: tour.id}, remote: :true, data: { confirm: 'Are you sure?' }, :style => "color: white;" , :class => "btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>

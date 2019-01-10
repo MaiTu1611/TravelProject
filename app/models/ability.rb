@@ -31,6 +31,12 @@ class Ability
     user ||= User.new
     if user.has_role?
         can :manage, :all # admin có tất cả các quyền
+        # Always performed
+        can :access, :ckeditor   # needed to access Ckeditor filebrowser
+
+        # Performed checks for actions:
+        can [:read, :create, :destroy], Ckeditor::Picture
+        can [:read, :create, :destroy], Ckeditor::AttachmentFile
     else
         # Only upadte own question
         can :update, Question do |question|
@@ -75,6 +81,8 @@ class Ability
         can :create, Answer
         can :create, Tour
         can :read, Tour
+        can :update, Tour
+        can :delete_tour, Tour
         # can :create, Travel
         can :read, Travel
         can :read, Question

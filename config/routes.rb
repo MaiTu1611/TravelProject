@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   	resources :questions do
  		resources :answers
  	end
+    mount Ckeditor::Engine => '/ckeditor'
   	get 'welcome/index'
   	devise_for :users , controllers: { confirmations: 'confirmations' }
   	resources :articles
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     get 'articles/delete_tour/:id_destroy_tour'=>'articles#destroy_tour', as: 'destroy_tour'
     get 'articles/delete_travel/:id_destroy_travel'=>'articles#destroy_travel', as: 'destroy_travel'
     get 'articles/search_tour/:status'=>'articles#search_tour', as: 'search_tour'
+    get 'tours/delete_tour/:id'=>'tours#delete_tour', as: 'delete_tour'
   	root to: 'welcome#index'
   	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

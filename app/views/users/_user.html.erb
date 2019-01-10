@@ -3,7 +3,7 @@
   <td><%= user.last_name %></td>
   <td><%= user.email %></td>
   <td><%= user.telephone %></td>
-  <td class="text-center center-button"><%= link_to 'Edit', edit_user_path(user) , :style => "color: white;" , :class => "btn btn-success btn-xs" %></td>
-  <td class="text-center center-button"><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } , :style => "color: white;" , :class => "btn btn-danger btn-xs"  %></td>
+  <td class="text-center center-button button-edit-del"><%= link_to 'Sửa', edit_user_path(user) , :style => "color: white;" , :class => "btn btn-success btn-xs" %></td>
+  <td class="text-center center-button button-edit-del"><%= link_to 'Xóa', user, method: :delete, data: { confirm: 'Are you sure?' } , :style => "color: white;" , :class => "btn btn-danger btn-xs"  %></td>
   <!-- <td class="text-center center-button"><%= link_to 'Send Mail', send_mails_path , :style => "color: white;" , :class => "btn btn-warning btn-xs" %></td> -->
 </tr>

@@ -40,6 +40,27 @@
         <span>Ngày khởi hành:</span>
         <%= @travel.time_go %>
     </div>
+  <%= form.hidden_field :travel_id, :value => @travel.id %>
+
+  <div class="field">
+    <i class="icon-tag"></i>
+    <span>Số người đi: </span>
+    <% if @tour.status.nil? || @tour.status == 0 || current_user.has_role? %>
+      <%= form.number_field :number_person, id: :tour_number_person, :class => "number" %>
+    <% else %>
+      <%= @tour.number_person %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <i class="icon-tag"></i>
+    <span>Ghi chú: </span>
+    <% if @tour.status.nil? || @tour.status == 0 || current_user.has_role? %>
+      <%= form.text_area :description, id: :tour_description, :class => "description"%>
+    <% else %>
+      <%= @tour.description %>
+    <% end %>
+  </div>
 
   <% if current_user.has_role? %>
     <div class="field">

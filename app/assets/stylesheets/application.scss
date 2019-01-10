@@ -140,3 +140,28 @@
      width: 100%;
   }
 }
+
+@media (min-width: 1200px) {
+.container {
+    width: 1300px;
+}
+}
+
+#filter_by_date {
+  height: 20px;
+}
+
+.number {
+  width: 100px !important;
+  height: 30px !important;
+}
+
+.description {
+  resize: none;
+  width: 100%;
+  height: 300px;
+}
+
+.button-edit-del {
+  width: 90px;
+}

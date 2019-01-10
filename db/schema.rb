@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181222112213) do
+ActiveRecord::Schema.define(version: 20190110210055) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "content"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 20181222112213) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "file"
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "file_mails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,29 +77,30 @@ ActiveRecord::Schema.define(version: 20181222112213) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tours", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
+  create_table "tours", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "travel_id"
-    t.boolean "status" , default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date "created_at", null: false
+    t.date "updated_at", null: false
+    t.integer "status", limit: 1, default: 0
+    t.text "description", limit: 4294967295
+    t.integer "number_person"
   end
 
-  create_table "travels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci" do |t|
+  create_table "travels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name_tour"
-    t.bigint "price"
+    t.string "price"
     t.string "date"
     t.date "time_go"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "file", limit: 255
+    t.string "file"
     t.text "details", limit: 4294967295
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "age"
@@ -107,6 +120,7 @@ ActiveRecord::Schema.define(version: 20181222112213) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "email_confirmed", default: false
+    t.string "telephone", limit: 45, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

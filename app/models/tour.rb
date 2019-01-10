@@ -2,6 +2,7 @@ class Tour < ApplicationRecord
 	belongs_to :user
 	belongs_to :travel
 	before_create :default_values
+	validates :number_person, presence: true
 
 	STATUS = %i[Chờ Duyệt Hủy]
 
